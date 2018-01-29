@@ -1,0 +1,28 @@
+---
+# tasks file for database
+- name: install database {{ packager_db }} package
+  package:
+   name: '{{ packager_db }}'
+   state: present
+#   include_tasks: "{{ ansible_distribution }}.yml"
+#   with_items:
+#    - "{{ _packager_db }}" 
+#    - "{{ _list_dependencies }}"
+
+- name: Start {{ packager_db  }} Service
+  service:
+   name: '{{ packager_service }}'
+   state: started
+   enabled: yes
+
+#- name: Create database configuration file
+#  template: 
+ #  src: '{{ _db_src_file }}'
+  # dest: '{{ _db_dest_path }}'
+
+
+#- name: restart {{ packager_service  }} Service
+#  service:
+ #  name: '{{ packager_db }}'
+  # state: restarted
+

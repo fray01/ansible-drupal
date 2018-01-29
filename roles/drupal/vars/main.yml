@@ -1,0 +1,6 @@
+_drupal_version: "8.4.4"
+_drupal_group: "drupal"
+_drupal_user: "drupal"
+_drupal_password: "pa$$w0rd"
+_drupal_path: "/var/www/html"
+_drupal_user_home: "/home/{{ _drupal_user }}"

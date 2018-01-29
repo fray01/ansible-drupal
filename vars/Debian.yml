@@ -1,0 +1,25 @@
+---
+packager_web: apache2
+packager_db: mysql-server
+
+template_web: debian_web.conf.j2
+config_path_web: /etc/apache2/sites-available/default
+
+template_db: debian_db.conf.j2
+# config_path_db: /etc/my.cnf
+
+os_distribution: Debian
+
+_params:
+  - name: Debian params
+    _webserver_name: "{{ packager_web }}"
+    _db_src_file: "{{ template_db }}"
+#    _db_dest_path: "{{ config_path_db }}"
+    _web_src_file: "{{ template_web }}"
+    _web_dest_path: "{{ config_path_web }}"
+    _packager_web: "{{ packager_web }}"
+    _packager_db: "{{ packager_db }}"
+
+_list_dependencies:
+ - name: dependance
+   

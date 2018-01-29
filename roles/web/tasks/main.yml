@@ -1,0 +1,32 @@
+---
+# tasks file for roles/web {{ ansible_distribution }}
+
+ - name: loading variables mention on file {{ ansible_distribution }}.yml
+   include_vars: "{{ item }}"
+   with_first_found:
+    - RedHat.yml
+    - Debian.yml
+
+ - name: install {{ _webserver_name }} webservers package
+   package:
+    name: '{{ _packager_web }}'
+    state: present
+
+ - name: enable webservers
+   service:
+   name: '{{ _webserver_name }}'
+   state: started
+   enable: YES
+
+ - name: configure {{ _webserver_name }} config file
+#   template: 
+#    src: "{{ _web_src_file }}"
+#    dest: "{{ _config_dest_path }}"
+    shell: cat {{ _web_src_file }} >> {{ _web_dest_path }}
+#    notify: restart {{ _webserver_name }}
+    with_items: {{ _params }}
+
+ - name: restart webservers
+   service:
+   name: '{{ _webserver_name }}'
+   state: restarted

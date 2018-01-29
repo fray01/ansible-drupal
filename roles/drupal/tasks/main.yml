@@ -1,0 +1,25 @@
+---
+# tasks file for roles/drupal
+
+- name: Download Drupal {{ _drupal_version }}
+  get_url: 
+   url: https://ftp.drupal.org/files/projects/drupal-{{ _drupal_version }}.tar.gz
+   dest: /var/www/drupal-{{ _drupal_version }}.tar.gz
+   mode: 0744
+
+- name: extract archive {{ _drupal_path }}
+  shell:
+   chdir: /var/www/ /bin/tar xvf drupal-{{ _drupal_version }}.tar.gz 
+   creates: "{{ _drupal_path }}/drupal"
+
+- name: Add group drupal
+  group: 
+   name: "{{ _drupal_group }}"
+
+- name: Create drupal user
+  user:
+   name: "{{ _drupal_user }}"
+   password: "{{ _drupal_password | password_hash('sha512') }}"
+   home: "/var/www/html/drupal/"
+   group: "{{ _drupal_group }}"
+   shell: "/bin/bash"

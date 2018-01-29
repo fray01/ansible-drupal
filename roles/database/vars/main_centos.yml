@@ -1,0 +1,24 @@
+---
+packager_web: httpd
+packager_db: mariadb-server
+
+template_web: centos_web.conf.j2
+config_path_web: /etc/httpd/conf/httpd.conf
+
+template_db: centos_db.conf.j2
+config_path_db: /etc/my.cnf
+
+os_distribution: RedHat
+
+_params_centos:
+  - name: RedHat params
+    _webserver_name: "{{ packager_web }}"
+    _db_src_file: "{{ template_db }}"
+#    _db_dest_path: "{{ config_path_db }}"
+    _web_src_file: "{{ template_web }}"
+    _web_dest_path: "{{ config_path_web }}"
+    _packager_web: "{{ packager_web }}"
+    _packager_db: "{{ packager_db }}"
+
+_list_dependencies:
+ - name: dependance
