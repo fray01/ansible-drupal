@@ -8,9 +8,17 @@
    mode: 0744
 
 - name: extract archive {{ _drupal_path }}
-  shell:
-   chdir: /var/www/ /bin/tar xvf drupal-{{ _drupal_version }}.tar.gz 
-   creates: "{{ _drupal_path }}/drupal"
+#  shell:
+#   chdir: /var/www/ /bin/tar xvf drupal-{{ _drupal_version }}.tar.gz 
+#   creates: "{{ _drupal_path }}/drupal"
+  unarchive:
+   src: /var/www/drupal-{{ _drupal_version }}.tar.gz
+   dest: /var/www/html/
+   list_files: yes
+   mode: 0755
+
+- name: change unarchiving filename
+  command: mv /var/www/html/drupal-{{ _drupal_version }} /var/www/html/drupal
 
 - name: Add group drupal
   group: 
