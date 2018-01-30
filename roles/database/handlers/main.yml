@@ -1,2 +1,6 @@
 ---
 # handlers file for database
+- name: restart {{ packager_service }}
+  service:
+   name: '{{ packager_service }}'
+   state: restarted

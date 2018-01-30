@@ -1,2 +1,7 @@
 _drupal_version: 8.4.4
 #_drupal_path: 
+
+_db_password: ''
+_db_user: drupal
+_db_name: drupal
+_host: localhost

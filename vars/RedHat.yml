@@ -22,4 +22,5 @@ _packager_web: "{{ packager_web }}"
 _packager_db: "{{ packager_db }}"
 
 _list_dependencies:
- - name: dependance
+# - name: dependance
+ dep1: The MySQL-python

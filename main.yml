@@ -14,8 +14,8 @@
   roles:
     - database
 
-- name: configure and deploy the drupal
-  hosts: localhost
-  remote_user: root
-  roles:
+#- name: configure and deploy the drupal
+#  hosts: localhost
+#  remote_user: root
+ # roles:
     - drupal

@@ -1,6 +1,7 @@
 ---
 packager_web: apache2
 packager_db: mysql-server
+packager_service: apache2
 
 template_web: debian_web.conf.j2
 config_path_web: /etc/apache2/sites-available/default
