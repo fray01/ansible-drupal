@@ -12,6 +12,7 @@
   vars_files:
     - [ "vars/RedHat.yml", "vars/Debian.yml" ]
   roles:
+    - web
     - database
 
 #- name: configure and deploy the drupal

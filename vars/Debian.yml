@@ -20,7 +20,4 @@ _params:
     _web_dest_path: "{{ config_path_web }}"
     _packager_web: "{{ packager_web }}"
     _packager_db: "{{ packager_db }}"
-
-_list_dependencies:
- - name: dependance
    
