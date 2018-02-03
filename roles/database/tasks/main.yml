@@ -29,6 +29,7 @@
   mysql_db: 
    name: "{{ _db_name }}"
    login_password: "{{ _db_password }}"
-   encoding: 'utf8'
+   collation: "{{ _db_collation }}" 
+   encoding: "{{ _db_encoding }}"
    login_user: "{{ _db_user }}"
    state: present

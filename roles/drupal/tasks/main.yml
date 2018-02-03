@@ -20,6 +20,11 @@
 - name: change unarchiving filename
   command: mv /var/www/html/drupal-{{ _drupal_version }} /var/www/html/drupal
 
+- name: Give permission for files directory
+  file:
+    dest: "{{ _drupal_path }}/drupal"
+    recurse: yes
+    mode: 0777
 - name: Add group drupal
   group: 
    name: "{{ _drupal_group }}"
@@ -31,3 +36,14 @@
    home: "/var/www/html/drupal/"
    group: "{{ _drupal_group }}"
    shell: "/bin/bash"
+
+
+- name: Drupal | Drush site install if not already installed
+  command: >
+    drush site-install -y
+    --site-name="{{ _drupal_site_name }}"
+    --account-name={{ _drupal_user }}
+    --account-pass={{ _drupal_password }}
+    --db-url=mysql://{{ _db_user }}:{{ _db_password }}@{{ _host }}/{{ _db_name }}
+    -r {{ _drupal_path }}/drupal
+  state: restarted

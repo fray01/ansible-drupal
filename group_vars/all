@@ -1,7 +1,9 @@
 _drupal_version: 8.4.4
 #_drupal_path: 
 
-_db_password: ''
+_db_password: "pa$$w0rd"
 _db_user: drupal
 _db_name: drupal
 _host: localhost
+_db_collation: utf8_general_ci
+_db_encoding: utf8
